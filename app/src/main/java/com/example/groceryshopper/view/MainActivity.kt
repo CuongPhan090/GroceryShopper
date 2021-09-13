@@ -1,4 +1,4 @@
-package com.example.groceryshopper
+package com.example.groceryshopper.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

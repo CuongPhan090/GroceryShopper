@@ -1,4 +1,4 @@
-package com.example.groceryshopper
+package com.example.groceryshopper.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -30,16 +30,23 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupEvents() {
         binding.btnLogin.setOnClickListener{
+            var hasError = false
             val email = binding.etLoginEmail.text.toString()
             val password = binding.etLoginPassword.text.toString()
 
             if(email.isEmpty()) {
                 binding.etLoginEmail.error = "Email cannot be blank"
+                hasError = true
+
             }
             if (password.isEmpty()) {
                 binding.etLoginPassword.error = "Password cannot be blank"
+                hasError = true
             }
 
+            if (hasError) {
+                return@setOnClickListener
+            }
             val userAuthentication = JSONObject()
             userAuthentication.put("email", email)
             userAuthentication.put("password", password)
@@ -69,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnFacebook.setOnClickListener{
-
+            // explicit intent
         }
 
         binding.btnGoogle.setOnClickListener{

@@ -1,4 +1,4 @@
-package com.example.groceryshopper
+package com.example.groceryshopper.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -57,6 +57,9 @@ class RegisterActivity : AppCompatActivity() {
             editor.putString("email", email)
             editor.putString("password", password)
             editor.apply()
+
+            // API post here
+
         }
 
         binding.btnAlreadyHaveAnAccount.setOnClickListener{

@@ -6,7 +6,7 @@
     android:padding="@dimen/standard_padding"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".RegisterActivity">
+    tools:context=".view.RegisterActivity">
 
     <TextView
         android:textSize="@dimen/header_text_size"
