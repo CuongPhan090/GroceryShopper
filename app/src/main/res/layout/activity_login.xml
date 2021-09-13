@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/standard_padding"
+    tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/iv_login_logo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="@dimen/standard_margin"
+        android:src="@drawable/ic_logo"
+        app:layout_constraintBottom_toTopOf="@id/gl_horizontal_30"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_login_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:text="@string/label_phone_number"
+        android:textSize="@dimen/standard_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/gl_horizontal_30" />
+
+    <EditText
+        android:id="@+id/et_login_phone_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_phone_number" />
+
+    <TextView
+        android:id="@+id/tv_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:text="@string/label_password"
+        android:textSize="@dimen/standard_text_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_login_phone_number" />
+
+    <EditText
+        android:id="@+id/et_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_password" />
+
+    <TextView
+        android:id="@+id/tv_login_forgot_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:text="@string/label_forgot_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_login_password" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:background="@drawable/button_custom"
+        android:text="@string/btn_login"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_forgot_password" />
+
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:background="@drawable/button_custom"
+        android:text="@string/btn_register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+    <TextView
+        android:id="@+id/tv_login_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:gravity="center_horizontal"
+        android:text="@string/label_login_options"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_register" />
+
+    <Button
+        android:id="@+id/btn_facebook"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:layout_marginRight="@dimen/standard_margin"
+        android:background="@drawable/button_custom"
+        android:text="@string/btn_facebook"
+        app:layout_constraintEnd_toStartOf="@id/btn_google"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_options" />
+
+    <Button
+        android:id="@+id/btn_google"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/standard_margin"
+        android:layout_marginTop="@dimen/standard_margin"
+        android:background="@drawable/button_custom"
+        android:text="@string/btn_google"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_facebook"
+        app:layout_constraintTop_toBottomOf="@id/tv_login_options" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_horizontal_30"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
