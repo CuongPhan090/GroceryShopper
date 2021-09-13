@@ -13,15 +13,13 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.example.groceryshopper.Category
-import com.example.groceryshopper.R
+import com.example.groceryshopper.data.Category
 import com.example.groceryshopper.UrlRequest.BASE_URL
 import com.example.groceryshopper.UrlRequest.CATEGORY_END_POINT
 import com.example.groceryshopper.adapter.CategoryAdapter
 import com.example.groceryshopper.databinding.ActivityCategoryBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import org.json.JSONArray
 
 class CategoryActivity : AppCompatActivity() {
     lateinit var binding: ActivityCategoryBinding
@@ -77,12 +75,10 @@ class CategoryActivity : AppCompatActivity() {
                     binding.rvCategories.layoutManager = LinearLayoutManager(baseContext)
 
                     adapter.setOnCategorySelectedListener {
-//            val intent = Intent(baseContext, SubCategoryActivity::class.java)
-//            intent.putExtra("category", it.catName)
-//            intent.putExtra("categoryId", it.catId)
-//            startActivity(intent)
-                        Toast.makeText(baseContext, "${it.catName} ${it.catId}", Toast.LENGTH_LONG)
-                            .show()
+                    val intent = Intent(baseContext, SubCategoryActivity::class.java)
+                    intent.putExtra("category", it.catName)
+                    intent.putExtra("categoryId", it.catId)
+                    startActivity(intent)
                     }
                 }
             }, {
