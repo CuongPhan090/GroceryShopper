@@ -29,12 +29,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun setupEvents() {
-        binding.btnLogin.setOnClickListener{
+        binding.btnLogin.setOnClickListener {
             var hasError = false
             val email = binding.etLoginEmail.text.toString()
             val password = binding.etLoginPassword.text.toString()
 
-            if(email.isEmpty()) {
+            if (email.isEmpty()) {
                 binding.etLoginEmail.error = "Email cannot be blank"
                 hasError = true
 
@@ -47,39 +47,49 @@ class LoginActivity : AppCompatActivity() {
             if (hasError) {
                 return@setOnClickListener
             }
+
             val userAuthentication = JSONObject()
             userAuthentication.put("email", email)
             userAuthentication.put("password", password)
 
             val userAuthenticator = JsonObjectRequest(
                 Request.Method.POST,
-                "${BASE_URL}$LOGIN_END_POINT",
+                "$BASE_URL$LOGIN_END_POINT",
                 userAuthentication,
                 {
-                    val error = it.getString("error").toBoolean()
-                    if (error) {
-                        Toast.makeText(baseContext, "Incorrect username or password, please try again", Toast.LENGTH_LONG).show()
-                    } else {
-                        startActivity(Intent(baseContext, CategoryActivity::class.java))
-                    }
+
+                    // if the user click on remember me box then do this
+                    //  val sharedPref = getSharedPreferences("userAuthentication", MODE_PRIVATE)
+                    ////            val editor = sharedPref.edit()
+                    ////            editor.putString("firstName", firstName)
+                    ////            editor.putString("lastName", lastName)
+                    ////            editor.putString("address", address)
+                    ////            editor.putString("mobilePhone", mobilePhone)
+                    ////            editor.putString("email", email)
+                    ////            editor.putString("password", password)
+                    ////            editor.apply()
+                    startActivity(Intent(baseContext, CategoryActivity::class.java))
                 }, {
                     it.printStackTrace()
-                    Toast.makeText(baseContext, "Unable to retrieve the user data, please try again!", Toast.LENGTH_LONG).show()
+                    Toast.makeText(
+                        baseContext,
+                        "Incorrect username or password, please try again",
+                        Toast.LENGTH_LONG
+                    ).show()
                 }
             )
-
             requestQueue.add(userAuthenticator)
         }
 
-        binding.btnRegister.setOnClickListener{
+        binding.btnRegister.setOnClickListener {
             startActivity(Intent(baseContext, RegisterActivity::class.java))
         }
 
-        binding.btnFacebook.setOnClickListener{
+        binding.btnFacebook.setOnClickListener {
             // explicit intent
         }
 
-        binding.btnGoogle.setOnClickListener{
+        binding.btnGoogle.setOnClickListener {
 
         }
     }
