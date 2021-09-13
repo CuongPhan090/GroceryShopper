@@ -9,23 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceryShopper">
-<<<<<<< HEAD
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SplashScreenActivity">
-=======
         <activity android:name=".MainActivity">
->>>>>>> feature_splash_screen
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-<<<<<<< HEAD
-        <activity android:name=".MainActivity" />
-=======
->>>>>>> feature_splash_screen
     </application>
 
 </manifest>
