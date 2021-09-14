@@ -20,4 +20,5 @@
     <string name="label_regulations">By pressing sign up, you agree with the Terms of Services and Privacy Policy</string>
     <string name="btn_already_have_an_account">Already have an account?</string>
     <string name="label_email">Email</string>
+    <string name="label_welcome">SuperMarket X</string>
 </resources>

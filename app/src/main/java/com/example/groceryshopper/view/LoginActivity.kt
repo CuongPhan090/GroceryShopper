@@ -1,8 +1,10 @@
 package com.example.groceryshopper.view
 
+import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -22,7 +24,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         requestQueue = Volley.newRequestQueue(baseContext)
 
         setupEvents()
@@ -57,17 +58,11 @@ class LoginActivity : AppCompatActivity() {
                 "$BASE_URL$LOGIN_END_POINT",
                 userAuthentication,
                 {
-
-                    // if the user click on remember me box then do this
-                    //  val sharedPref = getSharedPreferences("userAuthentication", MODE_PRIVATE)
-                    ////            val editor = sharedPref.edit()
-                    ////            editor.putString("firstName", firstName)
-                    ////            editor.putString("lastName", lastName)
-                    ////            editor.putString("address", address)
-                    ////            editor.putString("mobilePhone", mobilePhone)
-                    ////            editor.putString("email", email)
-                    ////            editor.putString("password", password)
-                    ////            editor.apply()
+                    val sharePref = getSharedPreferences("userDetails", MODE_PRIVATE)
+                    val editor = sharePref.edit()
+                    editor.putString("usersEmail", email)
+                    editor.putString("userPassword", password)
+                    editor.apply()
                     startActivity(Intent(baseContext, CategoryActivity::class.java))
                 }, {
                     it.printStackTrace()
