@@ -21,4 +21,7 @@
     <string name="btn_already_have_an_account">Already have an account?</string>
     <string name="label_email">Email</string>
     <string name="label_welcome">SuperMarket X</string>
+    <string name="label_choose_amounts">Choose Amounts</string>
+    <string name="btn_add_to_cart">Add to cart</string>
+    <string name="label_quantity">1</string>
 </resources>
