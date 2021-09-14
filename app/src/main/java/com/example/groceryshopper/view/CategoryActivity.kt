@@ -76,8 +76,8 @@ class CategoryActivity : AppCompatActivity() {
 
                     adapter.setOnCategorySelectedListener {
                     val intent = Intent(baseContext, SubCategoryActivity::class.java)
-                    intent.putExtra("category", it.catName)
                     intent.putExtra("categoryId", it.catId)
+                    intent.putExtra("categoryName", it.catName)
                     startActivity(intent)
                     }
                 }

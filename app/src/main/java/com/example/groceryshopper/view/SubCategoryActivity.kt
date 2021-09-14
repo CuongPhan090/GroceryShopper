@@ -1,5 +1,6 @@
 package com.example.groceryshopper.view
 
+import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -56,8 +57,8 @@ class SubCategoryActivity : AppCompatActivity() {
     }
 
     private fun loadSubCategory() {
-        val category = intent?.extras?.getString("category")
         val categoryId = intent?.extras?.getInt("categoryId")
+        val categoryName = intent?.extras?.getString("categoryName")
         val subCategoryRequest = JsonObjectRequest(
             Request.Method.GET,
             "${BASE_URL}${SUB_CATEGORY_END_POINT}$categoryId",
@@ -75,7 +76,17 @@ class SubCategoryActivity : AppCompatActivity() {
                     adapter = SubCategoryAdapter(subCategories, imageLoader)
                     binding.rvSubcategories.adapter = adapter
                     binding.rvSubcategories.layoutManager = LinearLayoutManager(baseContext)
-                    this.title = category // change the title of the activity to the name of sub category dynamically
+
+                    adapter.setOnSubCategoryClickedListener{ subCategory ->
+                        val subId = subCategory.subId
+                        val style = subCategory.subName
+                        val foodName = categoryName
+                        val intent = Intent(baseContext, ProductActivity::class.java)
+                        intent.putExtra("subId", subId)
+                        intent.putExtra("style", style)
+                        intent.putExtra("foodName", foodName)
+                        startActivity(intent)
+                    }
                 }
             }, {
                 binding.pbSubcategory.visibility = View.GONE
