@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.LruCache
+import android.view.MenuItem
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.Toast
@@ -59,6 +60,10 @@ class SubCategoryActivity : AppCompatActivity() {
     private fun loadSubCategory() {
         val categoryId = intent?.extras?.getInt("categoryId")
         val categoryName = intent?.extras?.getString("categoryName")
+
+        supportActionBar?.title = "$categoryName"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val subCategoryRequest = JsonObjectRequest(
             Request.Method.GET,
             "${BASE_URL}${SUB_CATEGORY_END_POINT}$categoryId",
@@ -96,5 +101,12 @@ class SubCategoryActivity : AppCompatActivity() {
         )
 
         requestQueue.add(subCategoryRequest)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

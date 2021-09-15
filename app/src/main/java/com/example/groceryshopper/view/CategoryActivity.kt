@@ -5,6 +5,7 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.LruCache
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,7 +30,7 @@ class CategoryActivity : AppCompatActivity() {
     lateinit var imageLoader: ImageLoader
 
     val imageCache = object : ImageLoader.ImageCache {
-        val lruCache: LruCache<String, Bitmap> = LruCache(100)
+        val lruCache: LruCache<String, Bitmap> = LruCache(200)
         override fun getBitmap(url: String?): Bitmap? {
             return lruCache[url]
         }
@@ -47,11 +48,11 @@ class CategoryActivity : AppCompatActivity() {
         binding = ActivityCategoryBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.title = "Category"
         requestQueue = Volley.newRequestQueue(baseContext)
         imageLoader = ImageLoader(requestQueue, imageCache)
         loadCategory()
     }
-
 
     private fun loadCategory() {
 

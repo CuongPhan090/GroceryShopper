@@ -25,4 +25,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/niv_category_image"
         tools:text="Chicken" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

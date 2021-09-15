@@ -4,7 +4,7 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -19,6 +19,9 @@ class LoginActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityLoginBinding
     lateinit var requestQueue: RequestQueue
+    lateinit var email: String
+    lateinit var password: String
+    lateinit var pd: ProgressDialog
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,26 +32,34 @@ class LoginActivity : AppCompatActivity() {
         setupEvents()
     }
 
+    private fun isValid(): Boolean{
+        if (email.isEmpty()) {
+            binding.etLoginEmail.error = "Email cannot be blank"
+            return false
+        }
+        if (password.isEmpty()) {
+            binding.etLoginPassword.error = "Password cannot be blank"
+            return false
+        }
+        return true
+    }
+
+    private fun showProgressDialog() {
+        pd = ProgressDialog(this)
+        pd.setMessage("Logging in...")
+        pd.setCancelable(false)
+        pd.show()
+    }
+
     private fun setupEvents() {
         binding.btnLogin.setOnClickListener {
-            var hasError = false
-            val email = binding.etLoginEmail.text.toString()
-            val password = binding.etLoginPassword.text.toString()
+            email = binding.etLoginEmail.text.toString()
+            password = binding.etLoginPassword.text.toString()
 
-            if (email.isEmpty()) {
-                binding.etLoginEmail.error = "Email cannot be blank"
-                hasError = true
-
-            }
-            if (password.isEmpty()) {
-                binding.etLoginPassword.error = "Password cannot be blank"
-                hasError = true
-            }
-
-            if (hasError) {
+            if (!isValid()) {
                 return@setOnClickListener
             }
-
+            showProgressDialog()
             val userAuthentication = JSONObject()
             userAuthentication.put("email", email)
             userAuthentication.put("password", password)
@@ -58,6 +69,7 @@ class LoginActivity : AppCompatActivity() {
                 "$BASE_URL$LOGIN_END_POINT",
                 userAuthentication,
                 {
+                    pd.dismiss()
                     val sharePref = getSharedPreferences("userDetails", MODE_PRIVATE)
                     val editor = sharePref.edit()
                     editor.putString("usersEmail", email)
@@ -65,6 +77,7 @@ class LoginActivity : AppCompatActivity() {
                     editor.apply()
                     startActivity(Intent(baseContext, CategoryActivity::class.java))
                 }, {
+                    pd.dismiss()
                     it.printStackTrace()
                     Toast.makeText(
                         baseContext,
@@ -85,7 +98,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btnGoogle.setOnClickListener {
-
+            // explicit intent
         }
     }
 }

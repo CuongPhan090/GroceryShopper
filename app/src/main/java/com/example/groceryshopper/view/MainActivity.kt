@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding. root)
 
+        supportActionBar?.hide()
         requestQueue = Volley.newRequestQueue(baseContext)
         sharedPref = getSharedPreferences("userDetails", MODE_PRIVATE)
         if (sharedPref.contains("usersEmail")) {

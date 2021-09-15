@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.util.LruCache
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -41,7 +42,6 @@ class ProductActivity : AppCompatActivity() {
                 lruCache.put(url, bitmap)
             }
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +60,10 @@ class ProductActivity : AppCompatActivity() {
         val subCategoryId = intent?.extras?.getInt("subId")
         val style = intent?.extras?.getString("style")
         val foodName = intent?.extras?.getString("foodName")
+
+        supportActionBar?.title = "$style $foodName"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         val productRequest = JsonObjectRequest(
             Request.Method.GET,
             "$BASE_URL$PRODUCT_SUB_CATEGORY_END_POINT$subCategoryId",
@@ -72,7 +76,6 @@ class ProductActivity : AppCompatActivity() {
                 adapter = ProductAdapter(products, imageLoader)
                 binding.rvProducts.adapter = adapter
                 binding.rvProducts.layoutManager = LinearLayoutManager(baseContext)
-                binding.tvProductTitle.text = "$style $foodName"
 
                 adapter.onProductClickedListener { product ->
                     val intent = Intent(baseContext, ProductDetailActivity::class.java)
@@ -88,5 +91,12 @@ class ProductActivity : AppCompatActivity() {
         )
 
         requestQueue.add(productRequest)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

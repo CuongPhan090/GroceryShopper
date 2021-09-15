@@ -24,4 +24,5 @@
     <string name="label_choose_amounts">Choose Amounts</string>
     <string name="btn_add_to_cart">Add to cart</string>
     <string name="label_quantity">1</string>
+    <string name="view_cart">View cart</string>
 </resources>
