@@ -4,8 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.ImageLoader
-import com.example.groceryshopper.data.SubCategory
-import com.example.groceryshopper.databinding.ActivitySubCategoryBinding
+import com.example.groceryshopper.model.SubCategory
 import com.example.groceryshopper.databinding.HolderSubCategoryBinding
 import com.example.groceryshopper.holder.SubCategoryHolder
 

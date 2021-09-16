@@ -1,25 +1,32 @@
 package com.example.groceryshopper.view
 
 import android.content.Intent
+import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.LruCache
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
 import com.example.groceryshopper.R
 import com.example.groceryshopper.UrlRequest
-import com.example.groceryshopper.data.Product
+import com.example.groceryshopper.model.Product
 import com.example.groceryshopper.databinding.ActivityProductDetailBinding
+import com.example.groceryshopper.model.CartItem
+import com.example.groceryshopper.sql.ItemDao
 
 class ProductDetailActivity : AppCompatActivity() {
     lateinit var binding: ActivityProductDetailBinding
     lateinit var imageLoader: ImageLoader
     lateinit var requestQueue: RequestQueue
-    var product: Product? = null
+    lateinit var itemDao: ItemDao
+    lateinit var cartItem: ArrayList<CartItem>
+    private var product: Product? = null
+
 
     private val imageCache = object : ImageLoader.ImageCache {
         val lruCache: LruCache<String, Bitmap> = LruCache(200)
@@ -32,7 +39,6 @@ class ProductDetailActivity : AppCompatActivity() {
                 lruCache.put(url, bitmap)
             }
         }
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,6 +46,7 @@ class ProductDetailActivity : AppCompatActivity() {
         binding = ActivityProductDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        itemDao = ItemDao(baseContext)
         supportActionBar?.title = ""
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         requestQueue = Volley.newRequestQueue(baseContext)
@@ -60,7 +67,9 @@ class ProductDetailActivity : AppCompatActivity() {
             finish()
         }
         if (item.itemId == R.id.action_view_cart) {
-            startActivity(Intent(baseContext, CartActivity::class.java))
+            val intent = Intent(baseContext, CartActivity::class.java)
+            intent.putExtra("productDetail", product)
+            startActivity(intent)
         }
         return super.onOptionsItemSelected(item)
     }
@@ -90,7 +99,32 @@ class ProductDetailActivity : AppCompatActivity() {
         }
 
         binding.btnAddToCart.setOnClickListener {
-
+            if (quantity == 0) {
+                Toast.makeText(baseContext, "Invalid quantity", Toast.LENGTH_SHORT).show()
+            } else {
+                val name = product?.productName
+                val price = product?.price?.toDouble()
+                val url = "${UrlRequest.IMAGE_BASE_URL}${product?.image}"
+                val description = product?.description
+                var quantity = binding.tvQuantity.text.toString().toInt()
+                cartItem = itemDao.showItems()
+                // if duplicated item is added to the cart
+                // then update the only quantity in database
+                cartItem.forEach{ item ->
+                    if (item.name == name) {
+                        quantity += item.quantity
+                        val item = CartItem(item.itemId, url, name?: "", quantity, price?: 0.0, description?: "")
+                        itemDao.updateItem(item)
+                        Toast.makeText(baseContext, "Add to cart successfully", Toast.LENGTH_SHORT).show()
+                        finish()
+                        return@setOnClickListener
+                    }
+                }
+                val item = CartItem(0, url, name?: "", quantity, price?: 0.0, description?: "")
+                itemDao.addItem(item)
+                Toast.makeText(baseContext, "Add to cart successfully", Toast.LENGTH_SHORT).show()
+                finish()
+            }
         }
     }
 }

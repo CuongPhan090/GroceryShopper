@@ -4,11 +4,9 @@ import android.content.Intent
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.util.LruCache
 import android.view.MenuItem
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
@@ -19,11 +17,10 @@ import com.android.volley.toolbox.Volley
 import com.example.groceryshopper.UrlRequest.BASE_URL
 import com.example.groceryshopper.UrlRequest.SUB_CATEGORY_END_POINT
 import com.example.groceryshopper.adapter.SubCategoryAdapter
-import com.example.groceryshopper.data.SubCategory
+import com.example.groceryshopper.model.SubCategory
 import com.example.groceryshopper.databinding.ActivitySubCategoryBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import org.json.JSONObject
 
 class SubCategoryActivity : AppCompatActivity() {
     lateinit var binding: ActivitySubCategoryBinding

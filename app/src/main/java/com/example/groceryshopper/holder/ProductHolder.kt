@@ -4,7 +4,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.ImageLoader
 import com.example.groceryshopper.R
 import com.example.groceryshopper.UrlRequest.IMAGE_BASE_URL
-import com.example.groceryshopper.data.Product
+import com.example.groceryshopper.model.Product
 import com.example.groceryshopper.databinding.HolderProductBinding
 
 

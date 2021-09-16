@@ -1,4 +1,4 @@
-package com.example.groceryshopper.data
+package com.example.groceryshopper.model
 
 data class Category(
     val __v: Int,

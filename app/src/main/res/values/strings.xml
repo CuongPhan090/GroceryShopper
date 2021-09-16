@@ -25,4 +25,8 @@
     <string name="btn_add_to_cart">Add to cart</string>
     <string name="label_quantity">1</string>
     <string name="view_cart">View cart</string>
+    <string name="label_cart">Cart</string>
+    <string name="label_total">Total:</string>
+    <string name="label_checkout">Checkout</string>
+    <string name="label_pay_now">Pay it now</string>
 </resources>

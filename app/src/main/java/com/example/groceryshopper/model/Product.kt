@@ -1,4 +1,4 @@
-package com.example.groceryshopper.data
+package com.example.groceryshopper.model
 
 import android.os.Parcel
 import android.os.Parcelable

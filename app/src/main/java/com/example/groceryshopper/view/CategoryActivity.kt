@@ -5,7 +5,6 @@ import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.LruCache
-import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,7 +13,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
-import com.example.groceryshopper.data.Category
+import com.example.groceryshopper.model.Category
 import com.example.groceryshopper.UrlRequest.BASE_URL
 import com.example.groceryshopper.UrlRequest.CATEGORY_END_POINT
 import com.example.groceryshopper.adapter.CategoryAdapter
