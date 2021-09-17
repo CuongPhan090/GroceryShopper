@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageButton
+        android:id="@+id/ib_userPhoto"
+        android:layout_width="200dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_default_user_photo"
+        android:layout_height="200dp"
+        android:layout_marginTop="@dimen/enormous_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_firstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/huge_margin"
+        android:text="@string/label_first_name"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@id/gl_vertical30"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/ib_userPhoto" />
+
+    <EditText
+        android:id="@+id/et_userName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/standard_margin"
+        app:layout_constraintBottom_toBottomOf="@id/tv_firstName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical30"
+        app:layout_constraintTop_toTopOf="@id/tv_firstName"
+        tools:text="First name goes here" />
+
+
+    <TextView
+        android:id="@+id/tv_userEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:text="@string/label_email"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tv_firstName"
+        app:layout_constraintTop_toBottomOf="@id/tv_firstName" />
+
+    <EditText
+        android:id="@+id/et_userEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/standard_margin"
+        app:layout_constraintBottom_toBottomOf="@id/tv_userEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical30"
+        app:layout_constraintTop_toTopOf="@id/tv_userEmail"
+        tools:text="Email@gmail.com" />
+
+    <TextView
+        android:id="@+id/tv_userPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:text="@string/label_password"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tv_userEmail"
+        app:layout_constraintTop_toBottomOf="@id/tv_userEmail" />
+
+    <EditText
+        android:id="@+id/et_userPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/standard_margin"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@id/tv_userPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical30"
+        app:layout_constraintTop_toTopOf="@id/tv_userPassword"
+        tools:text="password goes here" />
+
+
+    <TextView
+        android:id="@+id/tv_userPhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/big_margin"
+        android:text="@string/label_phone_number"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/tv_userPassword"
+        app:layout_constraintTop_toBottomOf="@id/tv_userPassword" />
+
+    <EditText
+        android:id="@+id/et_userPhoneNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/standard_margin"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="@id/tv_userPhoneNumber"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/gl_vertical30"
+        app:layout_constraintTop_toTopOf="@id/tv_userPhoneNumber"
+        tools:text="123456789" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/huge_margin"
+        android:text="@string/label_save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_userPhoneNumber" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_vertical30"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent=".30" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

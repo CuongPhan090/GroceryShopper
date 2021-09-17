@@ -12,4 +12,6 @@
     <dimen name="big_padding">36dp</dimen>
     <dimen name="huge_text_size">48sp</dimen>
     <dimen name="small_padding">8dp</dimen>
+    <dimen name="huge_padding">48dp</dimen>
+    <dimen name="enormous_margin">60dp</dimen>
 </resources>

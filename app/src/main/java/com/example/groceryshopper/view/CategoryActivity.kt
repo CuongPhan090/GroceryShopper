@@ -1,13 +1,13 @@
 package com.example.groceryshopper.view
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.LruCache
 import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -25,6 +25,7 @@ import com.example.groceryshopper.UrlRequest.BASE_URL
 import com.example.groceryshopper.UrlRequest.CATEGORY_END_POINT
 import com.example.groceryshopper.adapter.CategoryAdapter
 import com.example.groceryshopper.databinding.ActivityCategoryBinding
+import com.example.groceryshopper.fragment.FragmentUserProfile
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -36,9 +37,17 @@ class CategoryActivity : AppCompatActivity() {
     lateinit var imageLoader: ImageLoader
     lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
     lateinit var headView: View
-    lateinit var userName : TextView
-    lateinit var userEmail : TextView
+    lateinit var userNameHeader: TextView
+    lateinit var userEmailHeader: TextView
+    lateinit var sharedPref: SharedPreferences
 
+    lateinit var userName: String
+    lateinit var userPassword: String
+    lateinit var userEmail: String
+    lateinit var mobilePhone: String
+//    lateinit var profilePhoto: String
+
+    lateinit var userProfileFragment: FragmentUserProfile
     val imageCache = object : ImageLoader.ImageCache {
         val lruCache: LruCache<String, Bitmap> = LruCache(200)
         override fun getBitmap(url: String?): Bitmap? {
@@ -67,16 +76,42 @@ class CategoryActivity : AppCompatActivity() {
         actionBarDrawerToggle.syncState()
         headView = binding.navView.getHeaderView(0)
 //        val userPhoto : ImageView = findViewById(R.id.iv_user_photo)
-        userName = headView.findViewById(R.id.tv_user_name)
-        userEmail = headView.findViewById(R.id.tv_user_email)
+        userNameHeader = headView.findViewById(R.id.tv_user_name)
+        userEmailHeader = headView.findViewById(R.id.tv_user_email)
 
-        val sharedPref = getSharedPreferences("userDetails", MODE_PRIVATE)
-        userName.text = sharedPref.getString("usersName", "Username").toString()
-        userEmail.text = sharedPref.getString("usersEmail", "Email").toString()
+        userProfileFragment = FragmentUserProfile()
+
+        sharedPref = getSharedPreferences("userDetails", MODE_PRIVATE)
+        userNameHeader.text = sharedPref.getString("userName", "Username").toString()
+        userEmailHeader.text = sharedPref.getString("userEmail", "Email").toString()
 
         binding.navView.setNavigationItemSelectedListener { itemMenu ->
             when (itemMenu.itemId) {
                 R.id.action_profile -> {
+                    // if UserProfileFragment is not in that backstack then add one
+                    // else replace the current view with the fragment in the backstack
+                    if (supportFragmentManager.findFragmentByTag("UserProfileFragment") == null) {
+                        val bundle = Bundle()
+                        userName = sharedPref.getString("userName", "") ?: ""
+                        userPassword = sharedPref.getString("userPassword", "") ?: ""
+                        userEmail = sharedPref.getString("userEmail", "") ?: ""
+                        mobilePhone = sharedPref.getString("mobilePhone", "") ?: ""
+
+                        bundle.putString("userName", userName)
+                        bundle.putString("userPassword", userPassword)
+                        bundle.putString("userEmail", userEmail)
+                        bundle.putString("mobilePhone", mobilePhone)
+
+                        userProfileFragment.arguments = bundle
+
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.constraintLayout, userProfileFragment)
+                            .addToBackStack("UserProfileFragment")
+                            .commit()
+                    } else {
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.constraint, userProfileFragment).commit()
+                    }
 
                 }
                 R.id.action_resetPassword -> {
@@ -95,7 +130,7 @@ class CategoryActivity : AppCompatActivity() {
                     }.create().show()
                 }
                 R.id.action_cart -> {
-
+                    startActivity(Intent(baseContext, CartActivity::class.java))
                 }
                 R.id.action_my_orders -> {
 
@@ -127,6 +162,7 @@ class CategoryActivity : AppCompatActivity() {
             finishAffinity()
         }
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (actionBarDrawerToggle.onOptionsItemSelected(item)) {
             return true

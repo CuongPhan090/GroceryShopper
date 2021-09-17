@@ -74,9 +74,11 @@ class LoginActivity : AppCompatActivity() {
                     val sharePref = getSharedPreferences("userDetails", MODE_PRIVATE)
                     val editor = sharePref.edit()
                     val userName = it.getJSONObject("user").getString("firstName")
-                    editor.putString("usersName", userName)
-                    editor.putString("usersEmail", email)
+                    val mobilePhone = it.getJSONObject("user").getString("mobile")
+                    editor.putString("userName", userName)
+                    editor.putString("userEmail", email)
                     editor.putString("userPassword", password)
+                    editor.putString("mobilePhone", mobilePhone)
                     editor.apply()
                     startActivity(Intent(baseContext, CategoryActivity::class.java))
                 }, {
