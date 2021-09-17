@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:title="Welcome">
+            <menu>
+                <item
+                    android:id="@+id/action_profile"
+                    android:icon="@drawable/ic_profile"
+                    android:title="@string/menu_profile" />
+
+                <item
+                    android:id="@+id/action_my_orders"
+                    android:icon="@drawable/ic_orders"
+                    android:title="@string/menu_my_order" />
+
+                <item
+                    android:id="@+id/action_cart"
+                    android:icon="@drawable/ic_shopping_cart"
+                    android:title="@string/menu_cart" />
+
+                <item
+                    android:id="@+id/action_resetPassword"
+                    android:icon="@drawable/ic_reset_password"
+                    android:title="@string/reset_password" />
+
+                <item
+                    android:id="@+id/action_logOut"
+                    android:icon="@drawable/ic_log_out"
+                    android:title="@string/menu_log_out" />
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/action_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/menu_settings" />
+        <item
+            android:id="@+id/action_contactUs"
+            android:icon="@drawable/ic_contact_us"
+            android:title="@string/menu_contact_us" />
+
+    </group>
+</menu>

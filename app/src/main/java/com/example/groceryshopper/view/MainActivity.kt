@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val LAUNCH_LOGIN_SCREEN: Int = 200
         const val LAUNCH_CATEGORY_SCREEN : Int = 300
-        const val threeSeconds = 1000L * 3
+        const val threeSeconds = 1000L * 0 //3
     }
 
     private lateinit var binding : ActivityMainBinding

@@ -29,4 +29,13 @@
     <string name="label_total">Total:</string>
     <string name="label_checkout">Checkout</string>
     <string name="label_pay_now">Pay it now</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="menu_profile">Profile</string>
+    <string name="reset_password">Reset password</string>
+    <string name="menu_log_out">Logout</string>
+    <string name="menu_cart">Cart</string>
+    <string name="menu_my_order">My Orders</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_contact_us">Contact Us</string>
 </resources>

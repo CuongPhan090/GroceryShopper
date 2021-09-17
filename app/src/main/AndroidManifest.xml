@@ -14,7 +14,9 @@
         <activity android:name=".view.ProductDetailActivity" />
         <activity android:name=".view.ProductActivity" />
         <activity android:name=".view.SubCategoryActivity" />
-        <activity android:name=".view.CategoryActivity" />
+        <activity
+            android:name=".view.CategoryActivity"
+            android:theme="@style/Theme.GroceryShopper.Overlay" />
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.LoginActivity" />
         <activity android:name=".view.MainActivity">

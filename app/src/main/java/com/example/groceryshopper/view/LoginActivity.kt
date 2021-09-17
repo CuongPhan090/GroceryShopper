@@ -4,6 +4,7 @@ import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.ProgressBar
 import android.widget.Toast
 import com.android.volley.Request
@@ -72,6 +73,8 @@ class LoginActivity : AppCompatActivity() {
                     pd.dismiss()
                     val sharePref = getSharedPreferences("userDetails", MODE_PRIVATE)
                     val editor = sharePref.edit()
+                    val userName = it.getJSONObject("user").getString("firstName")
+                    editor.putString("usersName", userName)
                     editor.putString("usersEmail", email)
                     editor.putString("userPassword", password)
                     editor.apply()
