@@ -8,4 +8,5 @@ object UrlRequest {
     const val CATEGORY_END_POINT = "category"
     const val SUB_CATEGORY_END_POINT = "subcategory/"
     const val PRODUCT_SUB_CATEGORY_END_POINT = "products/sub/"
+    const val CHANGE_PASSWORD_END_POINT = "users/"
 }

@@ -46,10 +46,12 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showProgressDialog() {
-        pd = ProgressDialog(this)
-        pd.setMessage("Logging in...")
-        pd.setCancelable(false)
-        pd.show()
+        pd = ProgressDialog(this).apply{
+            setMessage("Logging in...")
+            setCancelable(false)
+            show()
+        }
+
     }
 
     private fun setupEvents() {
@@ -75,10 +77,12 @@ class LoginActivity : AppCompatActivity() {
                     val editor = sharePref.edit()
                     val userName = it.getJSONObject("user").getString("firstName")
                     val mobilePhone = it.getJSONObject("user").getString("mobile")
+                    val userId = it.getJSONObject("user").getString("_id")
                     editor.putString("userName", userName)
                     editor.putString("userEmail", email)
                     editor.putString("userPassword", password)
                     editor.putString("mobilePhone", mobilePhone)
+                    editor.putString("userId", userId)
                     editor.apply()
                     startActivity(Intent(baseContext, CategoryActivity::class.java))
                 }, {
@@ -98,6 +102,10 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(baseContext, RegisterActivity::class.java))
         }
 
+
+        binding.tvLoginForgotPassword.setOnClickListener{
+            // open a fragment box to enter email and send OPT verification code
+        }
         binding.btnFacebook.setOnClickListener {
             // explicit intent
         }
@@ -105,5 +113,7 @@ class LoginActivity : AppCompatActivity() {
         binding.btnGoogle.setOnClickListener {
             // explicit intent
         }
+
+
     }
 }

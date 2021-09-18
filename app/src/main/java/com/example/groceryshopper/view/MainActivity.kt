@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     companion object {
         const val LAUNCH_LOGIN_SCREEN: Int = 200
         const val LAUNCH_CATEGORY_SCREEN : Int = 300
-        const val threeSeconds = 1000L * 0 //3
+        const val threeSeconds = 1000L * 3
     }
 
     private lateinit var binding : ActivityMainBinding
@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
         supportActionBar?.hide()
         requestQueue = Volley.newRequestQueue(baseContext)
         sharedPref = getSharedPreferences("userDetails", MODE_PRIVATE)
-        if (sharedPref.contains("usersEmail")) {
+        if (sharedPref.contains("userEmail")) {
             handler.sendEmptyMessageDelayed(LAUNCH_CATEGORY_SCREEN, threeSeconds)
         } else {
             handler.sendEmptyMessageDelayed(LAUNCH_LOGIN_SCREEN, threeSeconds)
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
             }
             if (msg.what == LAUNCH_CATEGORY_SCREEN) {
                 sharedPref = getSharedPreferences("userDetails", MODE_PRIVATE)
-                val email = sharedPref.getString("usersEmail", "")
+                val email = sharedPref.getString("userEmail", "")
                 val password = sharedPref.getString("userPassword", "")
 
                 val userAuthentication = JSONObject()

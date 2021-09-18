@@ -3,6 +3,7 @@ package com.example.groceryshopper.view
 import android.content.Intent
 import android.content.SharedPreferences
 import android.graphics.Bitmap
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.LruCache
@@ -25,7 +26,6 @@ import com.example.groceryshopper.UrlRequest.BASE_URL
 import com.example.groceryshopper.UrlRequest.CATEGORY_END_POINT
 import com.example.groceryshopper.adapter.CategoryAdapter
 import com.example.groceryshopper.databinding.ActivityCategoryBinding
-import com.example.groceryshopper.fragment.FragmentUserProfile
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -41,13 +41,7 @@ class CategoryActivity : AppCompatActivity() {
     lateinit var userEmailHeader: TextView
     lateinit var sharedPref: SharedPreferences
 
-    lateinit var userName: String
-    lateinit var userPassword: String
-    lateinit var userEmail: String
-    lateinit var mobilePhone: String
-//    lateinit var profilePhoto: String
 
-    lateinit var userProfileFragment: FragmentUserProfile
     val imageCache = object : ImageLoader.ImageCache {
         val lruCache: LruCache<String, Bitmap> = LruCache(200)
         override fun getBitmap(url: String?): Bitmap? {
@@ -79,7 +73,6 @@ class CategoryActivity : AppCompatActivity() {
         userNameHeader = headView.findViewById(R.id.tv_user_name)
         userEmailHeader = headView.findViewById(R.id.tv_user_email)
 
-        userProfileFragment = FragmentUserProfile()
 
         sharedPref = getSharedPreferences("userDetails", MODE_PRIVATE)
         userNameHeader.text = sharedPref.getString("userName", "Username").toString()
@@ -88,34 +81,11 @@ class CategoryActivity : AppCompatActivity() {
         binding.navView.setNavigationItemSelectedListener { itemMenu ->
             when (itemMenu.itemId) {
                 R.id.action_profile -> {
-                    // if UserProfileFragment is not in that backstack then add one
-                    // else replace the current view with the fragment in the backstack
-                    if (supportFragmentManager.findFragmentByTag("UserProfileFragment") == null) {
-                        val bundle = Bundle()
-                        userName = sharedPref.getString("userName", "") ?: ""
-                        userPassword = sharedPref.getString("userPassword", "") ?: ""
-                        userEmail = sharedPref.getString("userEmail", "") ?: ""
-                        mobilePhone = sharedPref.getString("mobilePhone", "") ?: ""
-
-                        bundle.putString("userName", userName)
-                        bundle.putString("userPassword", userPassword)
-                        bundle.putString("userEmail", userEmail)
-                        bundle.putString("mobilePhone", mobilePhone)
-
-                        userProfileFragment.arguments = bundle
-
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.constraintLayout, userProfileFragment)
-                            .addToBackStack("UserProfileFragment")
-                            .commit()
-                    } else {
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.constraint, userProfileFragment).commit()
-                    }
-
+                    startActivity(Intent(baseContext, UserDetailActivity::class.java))
                 }
                 R.id.action_resetPassword -> {
-
+                    startActivity(Intent(baseContext, ResetPasswordActivity::class.java))
+                    // go to reset password activity, use _id + PUT to update the changes
                 }
                 R.id.action_logOut -> {
                     AlertDialog.Builder(this).apply {
@@ -133,13 +103,13 @@ class CategoryActivity : AppCompatActivity() {
                     startActivity(Intent(baseContext, CartActivity::class.java))
                 }
                 R.id.action_my_orders -> {
-
+                    // go to my orders activity
                 }
                 R.id.action_settings -> {
-
+                    // go to settings menu but do what?
                 }
                 R.id.action_contactUs -> {
-
+                    startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:123456789")))
                 }
             }
             binding.drawerLayout.closeDrawer(GravityCompat.START)

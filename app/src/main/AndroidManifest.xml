@@ -10,7 +10,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.GroceryShopper">
-        <activity android:name=".view.UserProfileActivity"></activity>
+        <activity android:name=".view.ResetPasswordActivity"></activity>
+        <activity android:name=".view.UserDetailActivity" />
+        <activity android:name=".view.UserProfileActivity" />
         <activity android:name=".view.CartActivity" />
         <activity android:name=".view.ProductDetailActivity" />
         <activity android:name=".view.ProductActivity" />
