@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_cardNumber"
+        android:id="@+id/et_houseNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/enormous_margin"
@@ -29,22 +29,22 @@
         app:layout_constraintTop_toBottomOf="@id/tv_shippingTitle" />
 
     <EditText
-        android:id="@+id/et_expDate"
+        android:id="@+id/et_streetName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_street_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_cardNumber" />
+        app:layout_constraintTop_toBottomOf="@id/et_houseNumber" />
 
     <EditText
-        android:id="@+id/et_securityCode"
+        android:id="@+id/et_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/hint_city_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_expDate" />
+        app:layout_constraintTop_toBottomOf="@id/et_streetName" />
 
     <EditText
         android:id="@+id/et_zipcode"
@@ -53,7 +53,7 @@
         android:hint="@string/hint_zip_code"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_securityCode" />
+        app:layout_constraintTop_toBottomOf="@id/et_city" />
 
     <EditText
         android:id="@+id/et_type"

@@ -14,6 +14,7 @@ class ItemDao(val context: Context) {
     fun addItem(item: CartItem): Boolean {
         try {
             val contentValues = ContentValues()
+            contentValues.put("productId", item.productId)
             contentValues.put("name", item.name)
             contentValues.put("url", item.url)
             contentValues.put("quantity", item.quantity)
@@ -42,6 +43,7 @@ class ItemDao(val context: Context) {
     fun updateItem(item: CartItem): Boolean {
         try {
             val contentValues = ContentValues()
+            contentValues.put("productId", item.productId)
             contentValues.put("name", item.name)
             contentValues.put("url", item.url)
             contentValues.put("quantity", item.quantity)
@@ -61,12 +63,13 @@ class ItemDao(val context: Context) {
         val cursor : Cursor = db.query("Items", null, null, null, null, null, null)
         while (cursor.moveToNext()) {
             val itemId = cursor.getLong(0)
-            val name = cursor.getString(1)
-            val price = cursor.getDouble(2)
-            val quantity = cursor.getInt(3)
-            val url = cursor.getString(4)
-            val description = cursor.getString(5)
-            val item = CartItem(itemId, url, name, quantity, price, description)
+            val productId = cursor.getString(1)
+            val name = cursor.getString(2)
+            val price = cursor.getDouble(3)
+            val quantity = cursor.getInt(4)
+            val url = cursor.getString(5)
+            val description = cursor.getString(6)
+            val item = CartItem(itemId, productId, url, name, quantity, price, description)
             items.add(item)
         }
         return items

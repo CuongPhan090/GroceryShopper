@@ -1,6 +1,7 @@
 package com.example.groceryshopper.views
 
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
@@ -18,6 +19,7 @@ class CartActivity : AppCompatActivity() {
     lateinit var binding: ActivityCartBinding
     lateinit var itemDao: ItemDao
     private var product: Product? = null
+    lateinit var sharedPref : SharedPreferences
 
     var cartItems: ArrayList<CartItem>? = null  //empty cart
 
@@ -26,6 +28,7 @@ class CartActivity : AppCompatActivity() {
         binding = ActivityCartBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        sharedPref = getSharedPreferences("Price", MODE_PRIVATE)
         product = intent?.extras?.getParcelable("productDetail")
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "Checkout"
@@ -122,6 +125,8 @@ class CartActivity : AppCompatActivity() {
             item -> totalPrice += (item.price * item.quantity)
         }
         binding.tvTotalPrice.text = "${totalPrice}INR"
+
+        sharedPref.edit().putFloat("totalPrice", totalPrice.toFloat()).apply()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

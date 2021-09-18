@@ -101,6 +101,7 @@ class ProductDetailActivity : AppCompatActivity() {
             if (quantity == 0) {
                 Toast.makeText(baseContext, "Invalid quantity", Toast.LENGTH_SHORT).show()
             } else {
+                val productId = product?._id
                 val name = product?.productName
                 val price = product?.price?.toDouble()
                 val url = "${UrlRequest.IMAGE_BASE_URL}${product?.image}"
@@ -112,14 +113,14 @@ class ProductDetailActivity : AppCompatActivity() {
                 cartItem.forEach{ item ->
                     if (item.name == name) {
                         quantity += item.quantity
-                        val item = CartItem(item.itemId, url, name?: "", quantity, price?: 0.0, description?: "")
+                        val item = CartItem(item.itemId, productId?: "", url, name?: "", quantity, price?: 0.0, description?: "")
                         itemDao.updateItem(item)
                         Toast.makeText(baseContext, "Add to cart successfully", Toast.LENGTH_SHORT).show()
                         finish()
                         return@setOnClickListener
                     }
                 }
-                val item = CartItem(0, url, name?: "", quantity, price?: 0.0, description?: "")
+                val item = CartItem(0, productId?: "" ,url, name?: "", quantity, price?: 0.0, description?: "")
                 itemDao.addItem(item)
                 Toast.makeText(baseContext, "Add to cart successfully", Toast.LENGTH_SHORT).show()
                 finish()

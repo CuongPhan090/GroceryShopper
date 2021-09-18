@@ -10,6 +10,7 @@ class DBHelper(val context: Context): SQLiteOpenHelper(context, "Items", null, 1
         val CREATE_TABLE_QUERY = """
             CREATE TABLE Items(
                 itemId INTEGER PRIMARY KEY AUTOINCREMENT,
+                productId TEXT,
                 name TEXT,
                 price REAL,
                 quantity INTEGER,
