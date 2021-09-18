@@ -1,7 +1,6 @@
-package com.example.groceryshopper.view
+package com.example.groceryshopper.views
 
 import android.content.Intent
-import android.database.sqlite.SQLiteDatabase
 import android.graphics.Bitmap
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,9 +13,9 @@ import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.Volley
 import com.example.groceryshopper.R
 import com.example.groceryshopper.UrlRequest
-import com.example.groceryshopper.model.Product
+import com.example.groceryshopper.models.Product
 import com.example.groceryshopper.databinding.ActivityProductDetailBinding
-import com.example.groceryshopper.model.CartItem
+import com.example.groceryshopper.models.CartItem
 import com.example.groceryshopper.sql.ItemDao
 
 class ProductDetailActivity : AppCompatActivity() {

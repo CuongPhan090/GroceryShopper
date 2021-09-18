@@ -1,12 +1,12 @@
-package com.example.groceryshopper.adapter
+package com.example.groceryshopper.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.ImageLoader
-import com.example.groceryshopper.model.SubCategory
+import com.example.groceryshopper.models.SubCategory
 import com.example.groceryshopper.databinding.HolderSubCategoryBinding
-import com.example.groceryshopper.holder.SubCategoryHolder
+import com.example.groceryshopper.holders.SubCategoryHolder
 
 class SubCategoryAdapter(var subCategories: ArrayList<SubCategory>, var imageLoader: ImageLoader) :
     RecyclerView.Adapter<SubCategoryHolder>() {

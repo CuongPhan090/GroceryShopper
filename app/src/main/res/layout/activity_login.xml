@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:padding="@dimen/standard_padding"
-    tools:context=".view.LoginActivity">
+    tools:context=".views.LoginActivity">
 
     <TextView
         android:textColor="@color/black"

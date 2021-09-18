@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/standard_padding"
-    tools:context=".view.CartActivity">
+    tools:context=".views.CartActivity">
 
     <TextView
         android:id="@+id/tv_cart"

@@ -1,16 +1,16 @@
-package com.example.groceryshopper.view
+package com.example.groceryshopper.views
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.groceryshopper.adapter.CartItemAdapter
-import com.example.groceryshopper.model.CartItem
+import com.example.groceryshopper.adapters.CartItemAdapter
+import com.example.groceryshopper.models.CartItem
 import com.example.groceryshopper.databinding.ActivityCartBinding
-import com.example.groceryshopper.model.Product
+import com.example.groceryshopper.models.Product
 import com.example.groceryshopper.sql.ItemDao
 
 class CartActivity : AppCompatActivity() {
@@ -54,6 +54,13 @@ class CartActivity : AppCompatActivity() {
         deleteItem()
         addQuantity()
         subtractQuantity()
+        checkout()
+    }
+
+    private fun checkout() {
+        binding.btnCheckout.setOnClickListener{
+            startActivity(Intent(baseContext, ShippingPaymentActivity::class.java))
+        }
     }
 
     private fun subtractQuantity() {

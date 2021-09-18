@@ -1,4 +1,4 @@
-package com.example.groceryshopper.view
+package com.example.groceryshopper.views
 
 import android.content.Intent
 import android.graphics.Bitmap
@@ -16,8 +16,8 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.groceryshopper.UrlRequest.BASE_URL
 import com.example.groceryshopper.UrlRequest.SUB_CATEGORY_END_POINT
-import com.example.groceryshopper.adapter.SubCategoryAdapter
-import com.example.groceryshopper.model.SubCategory
+import com.example.groceryshopper.adapters.SubCategoryAdapter
+import com.example.groceryshopper.models.SubCategory
 import com.example.groceryshopper.databinding.ActivitySubCategoryBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

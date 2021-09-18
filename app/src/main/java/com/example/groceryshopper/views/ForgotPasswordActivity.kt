@@ -1,4 +1,4 @@
-package com.example.groceryshopper.view
+package com.example.groceryshopper.views
 
 import android.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity

@@ -6,7 +6,7 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteException
 import android.widget.Toast
-import com.example.groceryshopper.model.CartItem
+import com.example.groceryshopper.models.CartItem
 
 class ItemDao(val context: Context) {
     val db: SQLiteDatabase = DBHelper(context).writableDatabase

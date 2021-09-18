@@ -49,4 +49,18 @@
     <string name="label_instruction_message">A verification code will be sent to the email address you provided</string>
     <string name="label_email_here">Email address:</string>
     <string name="btn_send_code">Send Code</string>
+    <string name="label_shipping_title">Shipping Information</string>
+    <string name="hint_street_name">Street Name</string>
+    <string name="hint_city_name">City</string>
+    <string name="hint_house_no">House Number</string>
+    <string name="hint_zip_code">Zipcode</string>
+    <string name="hint_type">Home/Apartment</string>
+    <string name="btn_continue">Continue</string>
+    <string name="label_payment_info">Payment Information</string>
+    <string name="hint_card_number">Card Number</string>
+    <string name="hint_exp_date">Expiration Date</string>
+    <string name="hint_card_holder">Card Holder</string>
+    <string name="hint_security_code">Security Code</string>
+    <string name="btn_submit_payment">Submit payment</string>
+    <string name="label_select_your_card">Select your cards</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.groceryshopper.view
+package com.example.groceryshopper.views
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -7,7 +7,6 @@ import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.widget.Toast
-import com.android.volley.DefaultRetryPolicy
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest

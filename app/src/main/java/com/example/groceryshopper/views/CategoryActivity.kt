@@ -1,4 +1,4 @@
-package com.example.groceryshopper.view
+package com.example.groceryshopper.views
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -6,6 +6,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.LruCache
 import android.view.MenuItem
 import android.view.View
@@ -21,10 +22,10 @@ import com.android.volley.toolbox.ImageLoader
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.groceryshopper.R
-import com.example.groceryshopper.model.Category
+import com.example.groceryshopper.models.Category
 import com.example.groceryshopper.UrlRequest.BASE_URL
 import com.example.groceryshopper.UrlRequest.CATEGORY_END_POINT
-import com.example.groceryshopper.adapter.CategoryAdapter
+import com.example.groceryshopper.adapters.CategoryAdapter
 import com.example.groceryshopper.databinding.ActivityCategoryBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -91,6 +92,7 @@ class CategoryActivity : AppCompatActivity() {
                     AlertDialog.Builder(this).apply {
                         setMessage("Are you sure you want to exit the app?")
                         setPositiveButton("Yes") { dialog, _ ->
+                            sharedPref.edit().clear().apply()
                             finishAffinity()
                             dialog.dismiss()
                         }

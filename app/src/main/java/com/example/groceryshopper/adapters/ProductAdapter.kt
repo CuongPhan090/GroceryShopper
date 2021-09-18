@@ -1,12 +1,12 @@
-package com.example.groceryshopper.adapter
+package com.example.groceryshopper.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.ImageLoader
-import com.example.groceryshopper.model.Product
+import com.example.groceryshopper.models.Product
 import com.example.groceryshopper.databinding.HolderProductBinding
-import com.example.groceryshopper.holder.ProductHolder
+import com.example.groceryshopper.holders.ProductHolder
 
 class ProductAdapter(var products: ArrayList<Product>, var imageLoader: ImageLoader): RecyclerView.Adapter<ProductHolder>() {
 

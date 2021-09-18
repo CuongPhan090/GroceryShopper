@@ -1,12 +1,8 @@
-package com.example.groceryshopper.holder
+package com.example.groceryshopper.holders
 
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.toolbox.ImageLoader
-import com.example.groceryshopper.R
-import com.example.groceryshopper.UrlRequest
-import com.example.groceryshopper.model.CartItem
+import com.example.groceryshopper.models.CartItem
 import com.example.groceryshopper.databinding.HolderCartItemBinding
-import com.example.groceryshopper.sql.ItemDao
 import com.squareup.picasso.Picasso
 
 class CartItemsHolder(val binding: HolderCartItemBinding) :

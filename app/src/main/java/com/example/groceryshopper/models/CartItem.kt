@@ -1,4 +1,4 @@
-package com.example.groceryshopper.model
+package com.example.groceryshopper.models
 
 data class CartItem(
     val itemId: Long = 0L,

@@ -1,12 +1,10 @@
-package com.example.groceryshopper.view
+package com.example.groceryshopper.views
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.ProgressBar
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -32,27 +30,6 @@ class LoginActivity : AppCompatActivity() {
         requestQueue = Volley.newRequestQueue(baseContext)
 
         setupEvents()
-    }
-
-    private fun isValid(): Boolean {
-        if (email.isEmpty()) {
-            binding.etLoginEmail.error = "Email cannot be blank"
-            return false
-        }
-        if (password.isEmpty()) {
-            binding.etLoginPassword.error = "Password cannot be blank"
-            return false
-        }
-        return true
-    }
-
-    private fun showProgressDialog() {
-        pd = ProgressDialog(this).apply {
-            setMessage("Logging in...")
-            setCancelable(false)
-            show()
-        }
-
     }
 
     private fun setupEvents() {
@@ -127,5 +104,27 @@ class LoginActivity : AppCompatActivity() {
                 create()
             }.show()
         }
+    }
+
+    private fun isValid(): Boolean {
+        if (email.isEmpty()) {
+            binding.etLoginEmail.error = "Email cannot be blank"
+            return false
+        }
+        if (password.isEmpty()) {
+            binding.etLoginPassword.error = "Password cannot be blank"
+            return false
+        }
+        return true
+    }
+
+
+    private fun showProgressDialog() {
+        pd = ProgressDialog(this).apply {
+            setMessage("Logging in...")
+            setCancelable(false)
+            show()
+        }
+
     }
 }

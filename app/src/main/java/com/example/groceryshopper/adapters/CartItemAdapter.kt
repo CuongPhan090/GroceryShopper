@@ -1,12 +1,11 @@
-package com.example.groceryshopper.adapter
+package com.example.groceryshopper.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.android.volley.toolbox.ImageLoader
-import com.example.groceryshopper.model.CartItem
+import com.example.groceryshopper.models.CartItem
 import com.example.groceryshopper.databinding.HolderCartItemBinding
-import com.example.groceryshopper.holder.CartItemsHolder
+import com.example.groceryshopper.holders.CartItemsHolder
 
 class CartItemAdapter(val cartItems: ArrayList<CartItem>?) :
     RecyclerView.Adapter<CartItemsHolder>() {

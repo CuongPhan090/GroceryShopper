@@ -1,8 +1,8 @@
-package com.example.groceryshopper.holder
+package com.example.groceryshopper.holders
 
 import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.toolbox.ImageLoader
-import com.example.groceryshopper.model.Category
+import com.example.groceryshopper.models.Category
 import com.example.groceryshopper.R
 import com.example.groceryshopper.UrlRequest.IMAGE_BASE_URL
 import com.example.groceryshopper.databinding.HolderCategoryBinding

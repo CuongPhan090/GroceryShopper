@@ -1,5 +1,6 @@
-package com.example.groceryshopper.view
+package com.example.groceryshopper.views
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.groceryshopper.UrlRequest.BASE_URL
-import com.example.groceryshopper.UrlRequest.CHANGE_PASSWORD_END_POINT
+import com.example.groceryshopper.UrlRequest.UPDATE_PROFILE_END_POINT
 import com.example.groceryshopper.databinding.ActivityResetPasswordBinding
 import org.json.JSONObject
 
@@ -44,8 +45,16 @@ class ResetPasswordActivity : AppCompatActivity() {
 
             if (validateInput()) {
                 if (validateCurrentPassword()) {
-                    showProgressBar()
-                    updateNewPassword()
+                    //showProgressBar()
+                    //updateNewPassword()
+                    AlertDialog.Builder(this).apply {
+                        setTitle("Notification")
+                        setMessage("This feature has not implemented yet")
+                        setPositiveButton("Ok") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        create()
+                    }.show()
                 }
             }
         }
@@ -68,30 +77,31 @@ class ResetPasswordActivity : AppCompatActivity() {
         return true
     }
 
+    // API NOT SUPPORTED
     // update password based on _id
-    private fun updateNewPassword() {
-        val newPassword = binding.etNewPassword.text.toString()
-        val userId = sharedPref.getString("userId", "")
-        val jsonObject = JSONObject()
-        jsonObject.put("password", newPassword)
-        val changePasswordRequest = JsonObjectRequest(
-            Request.Method.PUT,
-            "${BASE_URL}${CHANGE_PASSWORD_END_POINT}$userId",
-            jsonObject,
-            {
-                // update new password in sharedPref
-                sharedPref.edit().putString("userPassword", newPassword).apply()
-                pb.dismiss()
-                Toast.makeText(baseContext, "Successfully changed the password", Toast.LENGTH_SHORT).show()
-            }, {
-                pb.dismiss()
-                it.printStackTrace()
-                Toast.makeText(baseContext, "Failed to change password, please contact us.", Toast.LENGTH_SHORT).show()
-            }
-        )
-        requestQueue.add(changePasswordRequest)
-        finish()
-    }
+//    private fun updateNewPassword() {
+//        val newPassword = binding.etNewPassword.text.toString()
+//        val userId = sharedPref.getString("userId", "")
+//        val jsonObject = JSONObject()
+//        jsonObject.put("password", newPassword)
+//        val changePasswordRequest = JsonObjectRequest(
+//            Request.Method.PUT,
+//            "${BASE_URL}${UPDATE_PROFILE_END_POINT}$userId",
+//            jsonObject,
+//            {
+//                // update new password in sharedPref
+//                sharedPref.edit().putString("userPassword", newPassword).apply()
+//                pb.dismiss()
+//                Toast.makeText(baseContext, "Successfully changed the password", Toast.LENGTH_SHORT).show()
+//            }, {
+//                pb.dismiss()
+//                it.printStackTrace()
+//                Toast.makeText(baseContext, "Failed to change password, please contact us.", Toast.LENGTH_SHORT).show()
+//            }
+//        )
+//        requestQueue.add(changePasswordRequest)
+//        finish()
+//    }
 
     private fun validateInput(): Boolean{
         if (currentPassword.isEmpty()) {
