@@ -1,5 +1,6 @@
 package com.example.groceryshopper.view
 
+import android.app.AlertDialog
 import android.app.ProgressDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -33,7 +34,7 @@ class LoginActivity : AppCompatActivity() {
         setupEvents()
     }
 
-    private fun isValid(): Boolean{
+    private fun isValid(): Boolean {
         if (email.isEmpty()) {
             binding.etLoginEmail.error = "Email cannot be blank"
             return false
@@ -46,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun showProgressDialog() {
-        pd = ProgressDialog(this).apply{
+        pd = ProgressDialog(this).apply {
             setMessage("Logging in...")
             setCancelable(false)
             show()
@@ -102,18 +103,29 @@ class LoginActivity : AppCompatActivity() {
             startActivity(Intent(baseContext, RegisterActivity::class.java))
         }
 
-
-        binding.tvLoginForgotPassword.setOnClickListener{
-            // open a fragment box to enter email and send OPT verification code
+        binding.tvLoginForgotPassword.setOnClickListener {
+            startActivity(Intent(baseContext, ForgotPasswordActivity::class.java))
         }
         binding.btnFacebook.setOnClickListener {
-            // explicit intent
+            AlertDialog.Builder(this).apply {
+                setTitle("Notification")
+                setMessage("This feature has not implemented yet")
+                setPositiveButton("Ok") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                create()
+            }.show()
         }
 
         binding.btnGoogle.setOnClickListener {
-            // explicit intent
+            AlertDialog.Builder(this).apply {
+                setTitle("Notification")
+                setMessage("This feature has not implemented yet")
+                setPositiveButton("Ok") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                create()
+            }.show()
         }
-
-
     }
 }

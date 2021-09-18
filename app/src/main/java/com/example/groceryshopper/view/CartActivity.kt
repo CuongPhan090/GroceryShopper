@@ -35,8 +35,19 @@ class CartActivity : AppCompatActivity() {
         binding.rvItems.adapter = adapter
         binding.rvItems.layoutManager = LinearLayoutManager(baseContext)
 
+        updateCartQuantity()
         setupEvents()
     }
+
+    private fun updateCartQuantity() {
+        if (cartItems?.size?: 0 <= 1) {
+            binding.tvCart.text = "Cart(${cartItems?.size} item)"
+        }
+        if (cartItems?.size?: 0 > 1) {
+            binding.tvCart.text = "Cart(${cartItems?.size} items)"
+        }
+    }
+
 
     private fun setupEvents() {
         calculateTotalPrice()
@@ -87,6 +98,7 @@ class CartActivity : AppCompatActivity() {
                         adapter.notifyDataSetChanged()
                         dialog.dismiss()
                         calculateTotalPrice()
+                        updateCartQuantity()
                 }
                 setNegativeButton("No") {
                     dialog, _ ->

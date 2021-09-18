@@ -45,4 +45,8 @@
     <string name="label_confirm_new_password">Confirm Password</string>
     <string name="label_reset_password">Reset Password</string>
     <string name="btn_save">Save</string>
+    <string name="label_instruction">Enter your email address</string>
+    <string name="label_instruction_message">A verification code will be sent to the email address you provided</string>
+    <string name="label_email_here">Email address:</string>
+    <string name="btn_send_code">Send Code</string>
 </resources>

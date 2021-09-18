@@ -106,7 +106,14 @@ class CategoryActivity : AppCompatActivity() {
                     // go to my orders activity
                 }
                 R.id.action_settings -> {
-                    // go to settings menu but do what?
+                    android.app.AlertDialog.Builder(this).apply {
+                        setTitle("Notification")
+                        setMessage("This feature has not implemented yet")
+                        setPositiveButton("Ok") { dialog, _ ->
+                            dialog.dismiss()
+                        }
+                        create()
+                    }.show()
                 }
                 R.id.action_contactUs -> {
                     startActivity(Intent(Intent.ACTION_DIAL, Uri.parse("tel:123456789")))

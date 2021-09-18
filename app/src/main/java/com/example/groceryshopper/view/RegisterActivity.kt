@@ -2,6 +2,7 @@ package com.example.groceryshopper.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.RequestQueue
@@ -26,9 +27,17 @@ class RegisterActivity : AppCompatActivity() {
         binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         requestQueue = Volley.newRequestQueue(baseContext)
+        supportActionBar?.title = "Sign up"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setupEvents()
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
+    }
     private fun isValid(): Boolean{
         if (firstName.isEmpty()) {
             binding.etFirstName.error = "Invalid first name"

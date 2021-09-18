@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.groceryshopper">
+    package="com.example.groceryshopper" >
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -9,8 +9,10 @@
         android:icon="@drawable/ic_shopping_basket"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GroceryShopper">
-        <activity android:name=".view.ResetPasswordActivity"></activity>
+        android:theme="@style/Theme.GroceryShopper" >
+        <activity android:name=".view.ForgotPasswordActivity" >
+        </activity>
+        <activity android:name=".view.ResetPasswordActivity" />
         <activity android:name=".view.UserDetailActivity" />
         <activity android:name=".view.UserProfileActivity" />
         <activity android:name=".view.CartActivity" />
@@ -22,7 +24,7 @@
             android:theme="@style/Theme.GroceryShopper.Overlay" />
         <activity android:name=".view.RegisterActivity" />
         <activity android:name=".view.LoginActivity" />
-        <activity android:name=".view.MainActivity">
+        <activity android:name=".view.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
