@@ -125,6 +125,5 @@ class LoginActivity : AppCompatActivity() {
             setCancelable(false)
             show()
         }
-
     }
 }

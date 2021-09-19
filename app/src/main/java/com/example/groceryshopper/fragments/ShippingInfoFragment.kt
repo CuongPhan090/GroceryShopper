@@ -33,7 +33,7 @@ class ShippingInfoFragment: Fragment() {
         val city = binding.etCity.text.toString()
         val streetName = binding.etStreetName.text.toString()
         val houseNo = binding.etHouseNumber.text.toString()
-        val type = binding.etType.toString()
+        val type = binding.etType.text.toString()
 
         bundle.putString("pincode", pinCode)
         bundle.putString("city", city)
@@ -41,7 +41,33 @@ class ShippingInfoFragment: Fragment() {
         bundle.putString("houseNo", houseNo)
         bundle.putString("type", type)
         if (this::continueClickedListener.isInitialized) {
-            continueClickedListener(bundle)
+            if (validateInput()) {
+                continueClickedListener(bundle)
+            }
         }
+    }
+
+    private fun validateInput(): Boolean {
+        if (binding.etZipcode.text.toString().isEmpty()) {
+            binding.etZipcode.error = "Invalid input"
+            return false
+        }
+        if (binding.etCity.text.toString().isEmpty()) {
+            binding.etCity.error = "Invalid input"
+            return false
+        }
+        if (binding.etStreetName.text.toString().isEmpty()) {
+            binding.etStreetName.error = "Invalid input"
+            return false
+        }
+        if (binding.etHouseNumber.text.toString().isEmpty()) {
+            binding.etHouseNumber.error = "Invalid input"
+            return false
+        }
+        if (binding.etType.text.toString().isEmpty()) {
+            binding.etType.error = "Invalid input"
+            return false
+        }
+        return true
     }
 }

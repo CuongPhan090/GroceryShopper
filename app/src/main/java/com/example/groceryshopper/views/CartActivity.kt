@@ -62,6 +62,9 @@ class CartActivity : AppCompatActivity() {
 
     private fun checkout() {
         binding.btnCheckout.setOnClickListener{
+            if (cartItems?.size == 0) {
+                return@setOnClickListener
+            }
             startActivity(Intent(baseContext, ShippingPaymentActivity::class.java))
         }
     }

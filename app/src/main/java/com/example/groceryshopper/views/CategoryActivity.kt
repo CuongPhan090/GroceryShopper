@@ -105,7 +105,7 @@ class CategoryActivity : AppCompatActivity() {
                     startActivity(Intent(baseContext, CartActivity::class.java))
                 }
                 R.id.action_my_orders -> {
-                    // go to my orders activity
+                    startActivity(Intent(baseContext, OrderHistory::class.java))
                 }
                 R.id.action_settings -> {
                     android.app.AlertDialog.Builder(this).apply {

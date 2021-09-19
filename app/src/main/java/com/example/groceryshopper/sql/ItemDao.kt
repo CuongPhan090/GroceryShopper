@@ -29,6 +29,17 @@ class ItemDao(val context: Context) {
         }
     }
 
+    fun deleteAllItem(): Boolean {
+        try {
+            val result = db.delete("Items", null, null)
+            return result == 1
+        } catch (e: SQLiteException) {
+            e.printStackTrace()
+            Toast.makeText(context, "Unable to delete the item", Toast.LENGTH_LONG).show()
+            return false
+        }
+    }
+
     fun deleteItem(itemId: Long): Boolean {
         try {
             val result = db.delete("Items", "itemId=$itemId", null)

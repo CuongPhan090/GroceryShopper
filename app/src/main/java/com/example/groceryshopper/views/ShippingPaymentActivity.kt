@@ -1,6 +1,7 @@
 package com.example.groceryshopper.views
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -112,7 +113,7 @@ class ShippingPaymentActivity : AppCompatActivity() {
         cartItems = itemDao.showItems()
         val paymentMode = JSONObject()
 
-        paymentMode.put("paymentMode", "cash")
+        paymentMode.put("paymentMode", bundleList[1].getString("paymentMethod"))
         orderJsonObject.put("payment", paymentMode)
         orderJsonObject.put("userId", sharedPref.getString("userId", ""))
 
@@ -144,7 +145,11 @@ class ShippingPaymentActivity : AppCompatActivity() {
                 val error = it.getBoolean("error")
                 if (error) {
                     Toast.makeText(baseContext, "Unable to upload order", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(baseContext, "Successfully submit the order", Toast.LENGTH_SHORT).show()
                 }
+                itemDao.deleteAllItem()
+                startActivity(Intent(baseContext, CategoryActivity::class.java))
             }, {
                 pd.dismiss()
                 it.printStackTrace()

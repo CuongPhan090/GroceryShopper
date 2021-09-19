@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -24,29 +25,38 @@ class PaymentInfoFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentPaymentInfoBinding.inflate(layoutInflater, container, false)
-
+        selectPaymentMethod()
         binding.btnSubmitPayment.setOnClickListener {
-            selectPaymentMethod()
             sendPaymentInfo()
         }
-
         return binding.root
     }
 
     private fun selectPaymentMethod() {
         val spinner = binding.spinner
         val paymentList = listOf("Cash", "Credit Card", "Debit Card")
-        val adapter = activity?.let {
-            ArrayAdapter(
-                it,
+        val adapter = ArrayAdapter(
+                binding.root.context,
                 android.R.layout.simple_spinner_item,
                 android.R.id.text1,
                 paymentList
             )
+        spinner.onItemSelectedListener = object: AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                bundle.putString("paymentMethod", paymentList[position])
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
         }
         spinner.adapter = adapter
-
     }
+
 
     private fun sendPaymentInfo() {
         val cardHolder = binding.etCardHolder.text.toString()
@@ -60,7 +70,29 @@ class PaymentInfoFragment : Fragment() {
         bundle.putString("securityCode", securityCode)
 
         if (this::submitPaymentListener.isInitialized) {
-            submitPaymentListener(bundle)
+            if (isValidate()) {
+                submitPaymentListener(bundle)
+            }
         }
+    }
+
+    private fun isValidate(): Boolean{
+        if (binding.etCardHolder.text.toString().isEmpty()) {
+            binding.etCardHolder.error = "Invalid input"
+            return false
+        }
+        if (binding.etCardNumber.text.toString().isEmpty()) {
+            binding.etCardNumber.error = "Invalid input"
+            return false
+        }
+        if (binding.etExpDate.text.toString().isEmpty()) {
+            binding.etExpDate.error = "Invalid input"
+            return false
+        }
+        if (binding.etSecurityCode.text.toString().isEmpty()) {
+            binding.etSecurityCode.error = "Invalid input"
+            return false
+        }
+        return true
     }
 }

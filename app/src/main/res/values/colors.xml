@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="splash_screen_background">#03A9F4</color>
     <color name="grey">#BDBDBD</color>
+    <color name="order_date_background">#009688</color>
+    <color name="product_background">#B2DFDB</color>
 </resources>

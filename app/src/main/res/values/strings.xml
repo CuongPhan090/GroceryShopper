@@ -63,4 +63,5 @@
     <string name="hint_security_code">Security Code</string>
     <string name="btn_submit_payment">Submit payment</string>
     <string name="label_select_your_card">Select your cards</string>
+    <string name="label_order_history">Order History</string>
 </resources>
